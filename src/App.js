@@ -4,10 +4,11 @@ import Balance from './compoenents/Balance';
 import IncomeExpenses from './compoenents/IncomeExpenses';
 import TransactionList from './compoenents/TransactionList';
 import AddTransaction from './compoenents/AddTransaction';
+import { ExpenseTrackerProvider } from './context/ExpenseTrackerContext';
 
 const App = () => {
   return (
-    <div>
+    <ExpenseTrackerProvider>
       <Header />
       <div className='container'>
         <Balance />
@@ -15,7 +16,7 @@ const App = () => {
         <TransactionList />
         <AddTransaction />
       </div>
-    </div>
+    </ExpenseTrackerProvider>
   );
 };
 

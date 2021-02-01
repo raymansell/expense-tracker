@@ -1,12 +1,15 @@
+import { useExpenseTrackerContext } from '../context/ExpenseTrackerContext';
+import Transaction from './Transaction';
+
 const TransactionList = () => {
+  const { transactions } = useExpenseTrackerContext();
   return (
     <>
       <h3>History</h3>
       <ul className='list'>
-        <li className='minus'>
-          Cash <span>-$400</span>
-          <button className='delete-btn'>x</button>
-        </li>
+        {transactions.map((transaction) => (
+          <Transaction key={transaction.id} {...transaction} />
+        ))}
       </ul>
     </>
   );
