@@ -1,4 +1,5 @@
 import { useExpenseTrackerContext } from '../context/ExpenseTrackerContext';
+import { numberWithCommas } from '../utils/format';
 
 const Balance = () => {
   const { transactions } = useExpenseTrackerContext();
@@ -9,7 +10,7 @@ const Balance = () => {
   return (
     <>
       <h4>Your Balance</h4>
-      <h1>${total}</h1>
+      <h1>${numberWithCommas(total)}</h1>
     </>
   );
 };

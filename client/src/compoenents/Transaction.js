@@ -1,4 +1,5 @@
 import { useExpenseTrackerContext } from '../context/ExpenseTrackerContext';
+import { numberWithCommas } from '../utils/format';
 
 const Transaction = ({ id, text, amount }) => {
   const { deleteTransaction } = useExpenseTrackerContext();
@@ -8,7 +9,7 @@ const Transaction = ({ id, text, amount }) => {
     <li className={amount > 0 ? 'plus' : 'minus'}>
       {text}{' '}
       <span>
-        {sign}${Math.abs(amount)}
+        {sign}${numberWithCommas(Math.abs(amount))}
       </span>
       <button className='delete-btn' onClick={() => deleteTransaction(id)}>
         x
