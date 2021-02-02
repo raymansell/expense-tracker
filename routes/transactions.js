@@ -1,8 +1,13 @@
-const { red } = require('colors');
 const express = require('express');
 const router = express.Router();
-const { getTransactions } = require('../controllers/transactions');
+const {
+  getTransaction,
+  addTransaction,
+  deleteTransaction,
+} = require('../controllers/transactions');
 
-router.route('/').get(getTransactions);
+router.route('/').get(getTransaction).post(addTransaction);
+
+router.route('/:id').delete(deleteTransaction);
 
 module.exports = router;
