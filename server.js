@@ -1,8 +1,10 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const colors = require('colors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
+const cors = require('cors');
 
 dotenv.config({ path: './config/.env' });
 
@@ -12,6 +14,7 @@ const transactionsRouter = require('./routes/transactions');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 if (process.env.NODE_ENV === 'development') {
@@ -19,6 +22,13 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use('/api/v1/transactions', transactionsRouter);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  );
+}
 
 const PORT = process.env.PORT || 5000;
 
