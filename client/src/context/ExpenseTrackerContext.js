@@ -22,7 +22,7 @@ export const ExpenseTrackerProvider = ({ children }) => {
       });
     } catch (error) {
       dispatch({
-        type: ACTIONS.GET_TRANSACTIONS,
+        type: ACTIONS.TRANSACTION_ERROR,
         payload: { error: error.response.data.error },
       });
     }
@@ -34,7 +34,7 @@ export const ExpenseTrackerProvider = ({ children }) => {
       dispatch({ type: ACTIONS.DELETE_TRANSACTION, payload: { id } });
     } catch (error) {
       dispatch({
-        type: ACTIONS.GET_TRANSACTIONS,
+        type: ACTIONS.TRANSACTION_ERROR,
         payload: { error: error.response.data.error },
       });
     }
@@ -49,7 +49,7 @@ export const ExpenseTrackerProvider = ({ children }) => {
       });
     } catch (error) {
       dispatch({
-        type: ACTIONS.GET_TRANSACTIONS,
+        type: ACTIONS.TRANSACTION_ERROR,
         payload: { error: error.response.data.error },
       });
     }
